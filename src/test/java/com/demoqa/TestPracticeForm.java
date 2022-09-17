@@ -16,7 +16,7 @@ public class TestPracticeForm {
     static void setUp() {
         //Configuration.browser = "safari";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+        //Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
     }
 
@@ -27,6 +27,9 @@ public class TestPracticeForm {
         String email = "ann-stone@gmail.com";
         String gender = "Female";
         String number = "XXXXXXXXXXX";
+        String monthOfBirth = "January";
+        String yearOfBirth = "1995";
+        String dayOfBirth = "12";
         String state = "NCR";
         String city = "Delhi";
 
@@ -35,10 +38,19 @@ public class TestPracticeForm {
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
         $(byText(gender)).click();
+
+        // Fill Date of Birth
         $("#userNumber").setValue(number);
+        $(".react-datepicker__input-container").click();
+        $(".react-datepicker__month-select").selectOptionContainingText(monthOfBirth);
+        $(".react-datepicker__year-select").selectOptionContainingText(yearOfBirth);
+        $(byText(dayOfBirth)).click();
+
+        //String dayIn = "react-datepicker__day react-datepicker__day--0" + day;
+        //$("dayIn").selectOptionContainingText(day);
         //$("#dateOfBirthInput").setValue("08 Sep 2022");
-        $("#react-select-3-input").setValue(state).pressEnter();
-        $("#react-select-4-input").setValue(city).pressEnter();
+        //$("#react-select-3-input").setValue(state).pressEnter();
+        //$("#react-select-4-input").setValue(city).pressEnter();
 
 
 
@@ -49,4 +61,5 @@ public class TestPracticeForm {
 
 
     }
+
 }
