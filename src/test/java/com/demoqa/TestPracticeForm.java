@@ -30,6 +30,8 @@ public class TestPracticeForm {
         String monthOfBirth = "January";
         String yearOfBirth = "1995";
         String dayOfBirth = "12";
+        String subject = "QA automatization";
+        String[] hobby = {"Music","Sports"};
         String state = "NCR";
         String city = "Delhi";
 
@@ -45,6 +47,14 @@ public class TestPracticeForm {
         $(".react-datepicker__month-select").selectOptionContainingText(monthOfBirth);
         $(".react-datepicker__year-select").selectOptionContainingText(yearOfBirth);
         $(byText(dayOfBirth)).click();
+
+        // Fill Subject
+        $("#subjectsInput").setValue(subject);
+
+        // Fill Hobby
+        for (int i=0; i<hobby.length; i++) {
+            $(byText(hobby[i])).click();
+        }
 
         //String dayIn = "react-datepicker__day react-datepicker__day--0" + day;
         //$("dayIn").selectOptionContainingText(day);
