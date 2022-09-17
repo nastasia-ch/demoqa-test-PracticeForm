@@ -16,6 +16,7 @@ public class TestPracticeForm {
     static void setUp() {
         //Configuration.browser = "safari";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
     }
 
@@ -27,6 +28,7 @@ public class TestPracticeForm {
         String gender = "Female";
         String number = "XXXXXXXXXXX";
         String state = "NCR";
+        String city = "Delhi";
 
         open("/automation-practice-form");
         $("#firstName").setValue(firstName);
@@ -35,7 +37,8 @@ public class TestPracticeForm {
         $(byText(gender)).click();
         $("#userNumber").setValue(number);
         //$("#dateOfBirthInput").setValue("08 Sep 2022");
-        //$(".css-1uccc91-singleValue").selectOptionContainingText(state);
+        $("#react-select-3-input").setValue(state).pressEnter();
+        $("#react-select-4-input").setValue(city).pressEnter();
 
 
 
