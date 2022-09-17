@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -55,6 +57,10 @@ public class TestPracticeForm {
         for (int i=0; i<hobby.length; i++) {
             $(byText(hobby[i])).click();
         }
+
+        // Add picture
+        $("#uploadPicture").uploadFile(new File("/Users/admin/Pictures/raccoon.jpeg"));
+        //$("#uploadPicture").setValue("/Users/admin/Pictures/raccoon.jpeg");
 
         //String dayIn = "react-datepicker__day react-datepicker__day--0" + day;
         //$("dayIn").selectOptionContainingText(day);
