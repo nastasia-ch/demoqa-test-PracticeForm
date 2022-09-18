@@ -28,23 +28,35 @@ public class TestPracticeForm {
         String lastName = "Stone";
         String email = "ann-stone@gmail.com";
         String gender = "Female";
-        String number = "XXXXXXXXXXX";
+        String number = "89110000000";
         String monthOfBirth = "January";
         String yearOfBirth = "1995";
         String dayOfBirth = "12";
         String subject = "QA automatization";
         String[] hobby = {"Music","Sports"};
+        String address = "Current address";
         String state = "NCR";
         String city = "Delhi";
 
+        // Open Form
         open("/automation-practice-form");
+
+        // Fill First name
         $("#firstName").setValue(firstName);
+
+        // Fill Last name
         $("#lastName").setValue(lastName);
+
+        // Fill Email
         $("#userEmail").setValue(email);
+
+        // Fill gender
         $(byText(gender)).click();
 
-        // Fill Date of Birth
+        // Fill Number
         $("#userNumber").setValue(number);
+
+        // Fill Date of Birth
         $(".react-datepicker__input-container").click();
         $(".react-datepicker__month-select").selectOptionContainingText(monthOfBirth);
         $(".react-datepicker__year-select").selectOptionContainingText(yearOfBirth);
@@ -62,13 +74,14 @@ public class TestPracticeForm {
         $("#uploadPicture").uploadFile(new File("/Users/admin/Pictures/raccoon.jpeg"));
         //$("#uploadPicture").setValue("/Users/admin/Pictures/raccoon.jpeg");
 
-        //String dayIn = "react-datepicker__day react-datepicker__day--0" + day;
-        //$("dayIn").selectOptionContainingText(day);
-        //$("#dateOfBirthInput").setValue("08 Sep 2022");
-        //$("#react-select-3-input").setValue(state).pressEnter();
-        //$("#react-select-4-input").setValue(city).pressEnter();
+        // Fill Current address
+        $("#currentAddress").setValue(address);
 
+        // Choose state
+        $("#react-select-3-input").setValue(state).pressEnter();
 
+        // Choose city
+        $("#react-select-4-input").setValue(city).pressEnter();
 
 
 
