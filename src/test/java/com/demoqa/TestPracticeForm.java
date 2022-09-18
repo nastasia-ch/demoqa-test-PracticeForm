@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -28,7 +29,7 @@ public class TestPracticeForm {
         String lastName = "Stone";
         String email = "ann-stone@gmail.com";
         String gender = "Female";
-        String number = "89110000000";
+        String number = "8000000000";
         String monthOfBirth = "January";
         String yearOfBirth = "1995";
         String dayOfBirth = "12";
@@ -86,10 +87,27 @@ public class TestPracticeForm {
         $("#react-select-3-input").setValue(state).pressEnter();
 
         // Choose city
-        $("#react-select-4-input").setValue(city).pressEnter();
+        $("#react-select-4-input").setValue(city).pressEnter().pressEnter();
 
         //Click Submit
-        $("#submit").click();
+        $("#submit").doubleClick();
+
+        // Assertions
+        $(".table-responsive").shouldHave(Condition.text(firstName+" "+lastName));
+        $(".table-responsive").shouldHave(Condition.text(email));
+        $(".table-responsive").shouldHave(Condition.text(gender));
+        $(".table-responsive").shouldHave(Condition.text(number));
+        $(".table-responsive").shouldHave(Condition.text(dayOfBirth+" "+monthOfBirth+","+yearOfBirth));
+        for(int i=0; i< subject.length; i++) {
+            $(".table-responsive").shouldHave(Condition.text(subject[i]));
+        }
+        for(int j=0; j< subject.length; j++) {
+            $(".table-responsive").shouldHave(Condition.text(hobby[j]));
+        }
+        $(".table-responsive").shouldHave(Condition.text("raccoon.jpeg"));
+        $(".table-responsive").shouldHave(Condition.text(address));
+        $(".table-responsive").shouldHave(Condition.text(state+" "+city));
+
     }
 
 }
