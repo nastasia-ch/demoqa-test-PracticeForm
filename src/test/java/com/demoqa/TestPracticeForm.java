@@ -40,9 +40,6 @@ public class TestPracticeForm {
         // Open Form
         open("/automation-practice-form");
 
-
-        //$("#Katalon").clear();
-
         // Fill First name
         $("#firstName").setValue(firstName);
 
@@ -76,7 +73,6 @@ public class TestPracticeForm {
 
         // Add picture
         $("#uploadPicture").uploadFile(new File("/Users/admin/Pictures/raccoon.jpeg"));
-        //$("#uploadPicture").setValue("/Users/admin/Pictures/raccoon.jpeg");
 
         // Fill Current address
         $("#currentAddress").setValue(address);
