@@ -18,7 +18,6 @@ public class TestPracticeForm {
     @BeforeAll
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1980x1024";
         Configuration.holdBrowserOpen = true;
     }
 
@@ -44,7 +43,7 @@ public class TestPracticeForm {
         open("/automation-practice-form");
 
         // Close add
-        executeJavaScript("$('#footer').remove()");
+        executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
         // Fill form
