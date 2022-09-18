@@ -18,12 +18,15 @@ public class TestPracticeForm {
     @BeforeAll
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1980x1024";
         Configuration.holdBrowserOpen = true;
     }
 
     @Test
     void fillForm() {
-        String firstName = "Ann";
+
+        // Input data
+        String firstName = "Anna";
         String lastName = "Stone";
         String email = "ann-stone@gmail.com";
         String gender = "Female";
@@ -32,13 +35,19 @@ public class TestPracticeForm {
         String yearOfBirth = "1995";
         String dayOfBirth = "12";
         String[] subject = {"Maths","English"};
-        String[] hobby = {"Music","Sports"};
+        String[] hobby = {"Music","Reading"};
         String address = "Current address";
         String state = "NCR";
         String city = "Delhi";
 
         // Open Form
         open("/automation-practice-form");
+
+        // Close add
+        executeJavaScript("$('#footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
+        // Fill form
 
         // Fill First name
         $("#firstName").setValue(firstName);
@@ -49,44 +58,46 @@ public class TestPracticeForm {
         // Fill Email
         $("#userEmail").setValue(email);
 
-        // Fill gender
-        $(byText(gender)).click();
+        // Fill Gender
+        $("#genterWrapper").$(byText(gender)).click();
 
-        // Fill Number
+        // Fill Mobile number
         $("#userNumber").setValue(number);
 
         // Fill Date of Birth
         $(".react-datepicker__input-container").click();
         $(".react-datepicker__month-select").selectOptionContainingText(monthOfBirth);
         $(".react-datepicker__year-select").selectOptionContainingText(yearOfBirth);
-        $(byText(dayOfBirth)).click();
+        $(".react-datepicker__month").$(byText(dayOfBirth)).click();
 
-        // Fill Subject
+        // Fill Subjects
         for (int j=0; j<subject.length; j++) {
             $("#subjectsInput").setValue(subject[j]).pressEnter();
         }
 
-        // Fill Hobby
+        // Fill Hobbies
         for (int i=0; i<hobby.length; i++) {
-            $(byText(hobby[i])).click();
+            $("#hobbiesWrapper").$(byText(hobby[i])).click();
         }
 
         // Add picture
-        $("#uploadPicture").uploadFile(new File("/Users/admin/Pictures/raccoon.jpeg"));
+        $("#uploadPicture").uploadFromClasspath("raccoon.jpeg");
 
         // Fill Current address
         $("#currentAddress").setValue(address);
 
         // Choose state
-        $("#react-select-3-input").setValue(state).pressEnter();
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText(state)).click();
 
         // Choose city
-        $("#react-select-4-input").setValue(city).pressEnter().pressEnter();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText(city)).click();
 
-        //Click Submit
-        $("#submit").doubleClick();
+        // Click Submit
+        $("#submit").click();
 
-        // Assertions
+        // Check results
         $(".table-responsive").shouldHave(Condition.text(firstName+" "+lastName));
         $(".table-responsive").shouldHave(Condition.text(email));
         $(".table-responsive").shouldHave(Condition.text(gender));
