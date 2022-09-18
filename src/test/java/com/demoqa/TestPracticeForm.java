@@ -32,7 +32,7 @@ public class TestPracticeForm {
         String monthOfBirth = "January";
         String yearOfBirth = "1995";
         String dayOfBirth = "12";
-        String subject = "QA automatization";
+        String[] subject = {"Maths","English"};
         String[] hobby = {"Music","Sports"};
         String address = "Current address";
         String state = "NCR";
@@ -40,6 +40,9 @@ public class TestPracticeForm {
 
         // Open Form
         open("/automation-practice-form");
+
+
+        //$("#Katalon").clear();
 
         // Fill First name
         $("#firstName").setValue(firstName);
@@ -63,7 +66,9 @@ public class TestPracticeForm {
         $(byText(dayOfBirth)).click();
 
         // Fill Subject
-        $("#subjectsInput").setValue(subject);
+        for (int j=0; j<subject.length; j++) {
+            $("#subjectsInput").setValue(subject[j]).pressEnter();
+        }
 
         // Fill Hobby
         for (int i=0; i<hobby.length; i++) {
@@ -83,7 +88,8 @@ public class TestPracticeForm {
         // Choose city
         $("#react-select-4-input").setValue(city).pressEnter();
 
-
+        //Click Submit
+        $("#submit").click();
 
 
 
