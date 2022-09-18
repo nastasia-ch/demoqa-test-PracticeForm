@@ -90,11 +90,6 @@ public class TestPracticeForm {
 
         //Click Submit
         $("#submit").click();
-
-
-
-
-
     }
 
 }
