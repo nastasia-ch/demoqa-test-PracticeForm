@@ -17,9 +17,8 @@ public class TestPracticeForm {
 
     @BeforeAll
     static void setUp() {
-        //Configuration.browser = "safari";
         Configuration.baseUrl = "https://demoqa.com";
-        //Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1920 x 1080";
         Configuration.holdBrowserOpen = true;
     }
 
